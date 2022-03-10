@@ -1,8 +1,25 @@
-import React, { FC } from "react";
-import { LoginContainer, LoginForm } from "../../styles/Login.styles";
-import { Card, Text } from "../../styles/Splash.styles";
+import React, { FC, useState } from "react";
+import {
+  LoginContainer,
+  LoginForm,
+  LoginLabel,
+  LoginInput,
+  LoginButton,
+} from "../../styles/Login.styles";
+import { Card } from "../../styles/Splash.styles";
+import { useForm } from "react-hook-form";
+
+interface LoginForm {
+  login: string;
+  password: string;
+}
 
 const Login: FC = () => {
+  const [loginForm, setLoginForm] = useState<LoginForm>({
+    login: "",
+    password: "",
+  });
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
     console.log("Submitted");
@@ -10,13 +27,12 @@ const Login: FC = () => {
   return (
     <LoginContainer>
       <Card>
-        <Text>Login</Text>
         <LoginForm onSubmit={handleSubmit}>
-          <label>Login</label>
-          <input name="login"></input>
-          <label>Password: </label>
-          <input name="password"></input>
-          <button type="submit">Login</button>
+          <LoginLabel>Login</LoginLabel>
+          <LoginInput type="email" name="login"></LoginInput>
+          <LoginLabel>Password </LoginLabel>
+          <LoginInput type="password" name="password"></LoginInput>
+          <LoginButton type="submit">Login</LoginButton>
         </LoginForm>
       </Card>
     </LoginContainer>
