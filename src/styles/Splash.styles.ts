@@ -32,6 +32,7 @@ export const Card = styled.div`
 export const Text = styled.p`
   color: #011627;
   font-size: 2rem;
+  font-weight: 500;
 `;
 
 export const SplashButton = styled.button`
