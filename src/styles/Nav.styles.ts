@@ -16,6 +16,4 @@ export const Link = styled(NavLink)`
   font-size: large;
   text-decoration: none;
   color: #fdfffc;
-  &href: {
-  }
 `;
