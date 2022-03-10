@@ -27,11 +27,18 @@ export const Card = styled.div`
   -webkit-box-shadow: 3px 5px 10px 0px rgba(1, 22, 39, 1);
   -moz-box-shadow: 3px 5px 10px 0px rgba(1, 22, 39, 1);
   box-shadow: 3px 5px 10px 0px rgba(1, 22, 39, 1);
+  @media (max-width: 1400px) {
+    width: 60%;
+  }
+  @media (max-width: 860px) {
+    width: 95%;
+  }
 `;
 
 export const Text = styled.p`
   color: #011627;
   font-size: 2rem;
+  font-weight: 500;
 `;
 
 export const SplashButton = styled.button`
@@ -50,6 +57,13 @@ export const SplashButton = styled.button`
     -webkit-box-shadow: 3px 5px 10px 0px rgba(1, 22, 39, 1);
     -moz-box-shadow: 3px 5px 10px 0px rgba(1, 22, 39, 1);
     box-shadow: 3px 5px 10px 0px rgba(1, 22, 39, 1);
+  }
+  @media (max-width: 860px) {
+    width: 80%;
+    height: 50px;
+  }
+  @media (max-width: 1400px) {
+    width: 60%;
   }
 `;
 
@@ -73,5 +87,12 @@ export const SplashLink = styled(NavLink)`
     -webkit-box-shadow: 3px 5px 10px 0px rgba(1, 22, 39, 1);
     -moz-box-shadow: 3px 5px 10px 0px rgba(1, 22, 39, 1);
     box-shadow: 3px 5px 10px 0px rgba(1, 22, 39, 1);
+  }
+  @media (max-width: 860px) {
+    width: 80%;
+    height: 50px;
+  }
+  @media (max-width: 1400px) {
+    width: 60%;
   }
 `;
