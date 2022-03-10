@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import {
   LoginContainer,
   LoginForm,
@@ -17,13 +17,13 @@ interface LoginForm {
 const Login: FC = () => {
   const { register, handleSubmit } = useForm<LoginForm>();
 
-  const onSubmit = (data: any) => {
+  const onSubmit = handleSubmit((data) => {
     console.log(data);
-  };
+  });
   return (
     <LoginContainer>
       <Card>
-        <LoginForm onSubmit={handleSubmit(onSubmit)}>
+        <LoginForm onSubmit={onSubmit}>
           <LoginLabel>Login</LoginLabel>
           <LoginInput type="email" {...register("login")} required></LoginInput>
           <LoginLabel>Password </LoginLabel>
