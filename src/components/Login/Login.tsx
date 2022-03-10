@@ -15,11 +15,7 @@ interface LoginForm {
 }
 
 const Login: FC = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<LoginForm>();
+  const { register, handleSubmit } = useForm<LoginForm>();
 
   const onSubmit = (data: any) => {
     console.log(data);
@@ -37,9 +33,6 @@ const Login: FC = () => {
             required
           ></LoginInput>
           <LoginButton type="submit">Login</LoginButton>
-          {errors?.login || errors?.password ? (
-            <Text>errors.email.message</Text>
-          ) : null}
         </LoginForm>
       </Card>
     </LoginContainer>
