@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import {
   LoginContainer,
   LoginForm,
@@ -8,20 +8,50 @@ import {
 } from "../../styles/Login.styles";
 import { Card } from "../../styles/Splash.styles";
 import { useForm } from "react-hook-form";
+import api from "../../API";
+
+interface UserData {
+  Username?: string;
+  Password?: string;
+  Device?: {
+    Name: string;
+    PlatformCode: string;
+    FirebaseToken: string;
+    DpiCode: string;
+  };
+}
+
+interface AuthData {
+  Token?: string;
+  TokenExpires?: string;
+  RefreshToken?: string;
+}
 
 interface LoginForm {
-  login: string;
+  userName: string;
   password: string;
 }
 
 const Login: FC = () => {
   const { register, handleSubmit, reset } = useForm<LoginForm>();
+  const [user, setUser] = useState<UserData>({});
+  const [auth, setAuth] = useState<AuthData>({});
 
   const onSubmit = handleSubmit((data, e) => {
     e?.preventDefault();
-    console.log(data);
+    api
+      .userLogin(data)
+      .then((res) => {
+        setUser(res.data.User);
+        setAuth(res.data.AuthorizationToken);
+      })
+      .catch((err) => console.log(err));
+
+    api.getMedia(auth.Token);
+
     e?.target.reset();
   });
+
   return (
     <LoginContainer>
       <Card>
@@ -30,7 +60,7 @@ const Login: FC = () => {
           <LoginInput
             id="login"
             type="email"
-            {...register("login")}
+            {...register("userName")}
             required
           ></LoginInput>
           <LoginLabel htmlFor="password">Password </LoginLabel>
