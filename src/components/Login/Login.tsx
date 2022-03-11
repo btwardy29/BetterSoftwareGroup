@@ -6,7 +6,7 @@ import {
   LoginInput,
   LoginButton,
 } from "../../styles/Login.styles";
-import { Card, Text } from "../../styles/Splash.styles";
+import { Card } from "../../styles/Splash.styles";
 import { useForm } from "react-hook-form";
 
 interface LoginForm {
@@ -15,19 +15,27 @@ interface LoginForm {
 }
 
 const Login: FC = () => {
-  const { register, handleSubmit } = useForm<LoginForm>();
+  const { register, handleSubmit, reset } = useForm<LoginForm>();
 
-  const onSubmit = handleSubmit((data) => {
+  const onSubmit = handleSubmit((data, e) => {
+    e?.preventDefault();
     console.log(data);
+    e?.target.reset();
   });
   return (
     <LoginContainer>
       <Card>
         <LoginForm onSubmit={onSubmit}>
-          <LoginLabel>Login</LoginLabel>
-          <LoginInput type="email" {...register("login")} required></LoginInput>
-          <LoginLabel>Password </LoginLabel>
+          <LoginLabel htmlFor="login">Login</LoginLabel>
           <LoginInput
+            id="login"
+            type="email"
+            {...register("login")}
+            required
+          ></LoginInput>
+          <LoginLabel htmlFor="password">Password </LoginLabel>
+          <LoginInput
+            id="password"
             type="password"
             {...register("password")}
             required
