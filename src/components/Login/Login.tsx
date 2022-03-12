@@ -9,6 +9,7 @@ import {
 import { Card } from "../../styles/Splash.styles";
 import { useForm } from "react-hook-form";
 import api from "../../API";
+import { useStore } from "../../store";
 
 interface UserData {
   Username?: string;
@@ -34,8 +35,10 @@ interface LoginForm {
 
 const Login: FC = () => {
   const { register, handleSubmit, reset } = useForm<LoginForm>();
-  const [user, setUser] = useState<UserData>({});
-  const [auth, setAuth] = useState<AuthData>({});
+  // const [user, setUser] = useState<UserData>({});
+  // const [auth, setAuth] = useState<AuthData>({});
+
+  const { setAuthData, setUser } = useStore();
 
   const onSubmit = handleSubmit((data, e) => {
     e?.preventDefault();
@@ -43,13 +46,14 @@ const Login: FC = () => {
       .userLogin(data)
       .then((res) => {
         setUser(res.data.User);
-        setAuth(res.data.AuthorizationToken);
+        setAuthData(res.data.AuthorizationToken);
+        // setAuth(res.data.AuthorizationToken);
       })
       .catch((err) => console.log(err));
 
     e?.target.reset();
-    console.log(auth.Token);
-    api.getMedia(auth.Token);
+
+    // api.getMedia(auth.Token);
   });
 
   return (

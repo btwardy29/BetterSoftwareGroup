@@ -27,15 +27,16 @@ interface AuthData {
 }
 
 const Splash: FC = () => {
-  const [user, setUser] = useState<UserData>({});
-  const [auth, setAuth] = useState<AuthData>({});
-  const { addAuth, getAuth } = useStore();
+  // const [user, setUser] = useState<UserData>({});
+  // const [auth, setAuth] = useState<AuthData>({});
+
+  const { addAuth, getAuth, setAuthData, setUser } = useStore();
   const handleClick = () => {
     api
       .trialLogin()
       .then((res) => {
         setUser(res.data.User);
-        setAuth(res.data.AuthorizationToken);
+        setAuthData(res.data.AuthorizationToken);
         addAuth(true);
       })
       .catch((err) => {
