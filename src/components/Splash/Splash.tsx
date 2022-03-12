@@ -7,6 +7,7 @@ import {
   SplashLink,
 } from "../../styles/Splash.styles";
 import api from "../../API";
+import { useStore } from "../../store";
 
 interface UserData {
   Username?: string;
@@ -26,14 +27,22 @@ interface AuthData {
 }
 
 const Splash: FC = () => {
-  const [user, setUser] = useState<UserData>({});
-  const [auth, setAuth] = useState<AuthData>({});
+  // const [user, setUser] = useState<UserData>({});
+  // const [auth, setAuth] = useState<AuthData>({});
+
+  const { addAuth, getAuth, setAuthData, setUser } = useStore();
   const handleClick = () => {
-    api.trialLogin().then((res) => {
-      setUser(res.data.User);
-      setAuth(res.data.AuthorizationToken);
-    });
-    console.log(auth, user);
+    api
+      .trialLogin()
+      .then((res) => {
+        setUser(res.data.User);
+        setAuthData(res.data.AuthorizationToken);
+        addAuth(true);
+      })
+      .catch((err) => {
+        addAuth(false);
+        console.log(err);
+      });
   };
 
   return (
