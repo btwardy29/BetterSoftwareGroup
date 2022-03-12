@@ -1,7 +1,7 @@
 import create from "zustand";
 
 interface ZustandStore {
-  isAuth?: () => boolean;
+  isAuth?: boolean;
   user?: {
     Username: string;
     Password: string;
@@ -19,20 +19,15 @@ interface ZustandStore {
     RefreshToken: string;
   };
   addAuth: (auth: boolean) => void;
+  getAuth: () => void;
 }
-const initialState = {
-  isAuth: false,
-  user: {},
-  AuthData: {},
-};
 
-export const useStore = create((set: any, get: any) => ({
-  ...initialState,
+export const useStore = create<ZustandStore>((set, get) => ({
   getAuth: () => {
     return console.log(get().isAuth);
   },
-  addAuth: (auth: boolean) => {
-    set((state: any) => {
+  addAuth: (auth) => {
+    set((state) => {
       state.isAuth = auth;
     });
   },

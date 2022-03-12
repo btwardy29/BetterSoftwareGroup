@@ -47,9 +47,9 @@ const Login: FC = () => {
       })
       .catch((err) => console.log(err));
 
-    api.getMedia(auth.Token);
-
     e?.target.reset();
+    console.log(auth.Token);
+    api.getMedia(auth.Token);
   });
 
   return (

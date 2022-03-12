@@ -34,13 +34,14 @@ const Splash: FC = () => {
     api
       .trialLogin()
       .then((res) => {
-        getAuth();
         setUser(res.data.User);
         setAuth(res.data.AuthorizationToken);
         addAuth(true);
-        getAuth();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        addAuth(false);
+        console.log(err);
+      });
   };
 
   return (

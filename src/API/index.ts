@@ -46,7 +46,6 @@ export default {
       transformResponse: [
         function (data) {
           const json = JSON.parse(data);
-
           data = {
             AuthorizationToken: json.AuthorizationToken,
             User: json.User,
@@ -66,7 +65,7 @@ export default {
         Authorization: `${Token}`,
       },
       data: {
-        MediaListId: 2,
+        MediaListId: 3,
         IncludeCategories: false,
         IncludeImages: true,
         IncludeMedia: false,
