@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-
+import { useStore } from "../../store";
 import {
   Navbar,
   NavbarDesktop,
@@ -13,28 +13,53 @@ import {
 
 const Nav: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { isAuth, setAuth } = useStore();
+
+  const logout = () => {
+    setAuth(false);
+    setIsOpen(false);
+  };
 
   const togleMobileMenu = (e: React.SyntheticEvent<EventTarget>) => {
     setIsOpen(!isOpen);
-    console.log(isOpen);
   };
 
   const mobile = (
     <MobileLinks>
-      <MobileLink to="/home" onClick={togleMobileMenu}>
-        Home
-      </MobileLink>
-      <MobileLink to="/login" onClick={togleMobileMenu}>
-        Login
-      </MobileLink>
+      {isAuth ? (
+        <>
+          <MobileLink to="/home" onClick={togleMobileMenu}>
+            Home
+          </MobileLink>
+          <MobileLink to="/" onClick={togleMobileMenu}>
+            Logout
+          </MobileLink>
+        </>
+      ) : (
+        <>
+          <MobileLink to="/login" onClick={logout}>
+            Login
+          </MobileLink>
+        </>
+      )}
     </MobileLinks>
   );
   return (
     <>
       <Navbar>
         <NavbarDesktop>
-          <Link to="/home">Home</Link>
-          <Link to="/login">Login</Link>
+          {isAuth ? (
+            <>
+              <Link to="/home">Home</Link>
+              <Link to="/" onClick={logout}>
+                Logout
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/login">Login</Link>
+            </>
+          )}
         </NavbarDesktop>
         <NavbarMobile>
           {isOpen ? (
