@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export const SplashContainer = styled.div`
   height: 100vh;
-  width: 100wv;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;

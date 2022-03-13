@@ -10,23 +10,7 @@ import { Card } from "../../styles/Splash.styles";
 import { useForm } from "react-hook-form";
 import api from "../../API";
 import { useStore } from "../../store";
-
-interface UserData {
-  Username?: string;
-  Password?: string;
-  Device?: {
-    Name: string;
-    PlatformCode: string;
-    FirebaseToken: string;
-    DpiCode: string;
-  };
-}
-
-interface AuthData {
-  Token?: string;
-  TokenExpires?: string;
-  RefreshToken?: string;
-}
+import { useNavigate } from "react-router-dom";
 
 interface LoginForm {
   userName: string;
@@ -34,10 +18,11 @@ interface LoginForm {
 }
 
 const Login: FC = () => {
-  const [err, setErr] = useState();
   const { register, handleSubmit, reset } = useForm<LoginForm>();
 
-  const { setAuth, setAuthData, setUser } = useStore();
+  const { setUser } = useStore();
+
+  let navigate = useNavigate();
 
   const onSubmit = handleSubmit((data, e) => {
     e?.preventDefault();
@@ -45,11 +30,17 @@ const Login: FC = () => {
       .userLogin(data)
       .then((res) => {
         setUser(res.data.User);
-        setAuthData(res.data.AuthorizationToken);
-        setAuth(true);
+        localStorage.setItem(
+          "authToken",
+          JSON.stringify(res.data.AuthorizationToken.Token)
+        );
+        localStorage.setItem("isAuth", JSON.stringify(true));
+        navigate("/home");
       })
       .catch((err) => {
-        err ? setAuth(false) : console.log(err);
+        err
+          ? localStorage.setItem("isAuth", JSON.stringify(false))
+          : console.log(err);
       });
 
     e?.target.reset();
