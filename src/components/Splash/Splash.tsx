@@ -24,6 +24,7 @@ const Splash: FC = () => {
           "authToken",
           JSON.stringify(res.data.AuthorizationToken.Token)
         );
+
         localStorage.setItem("isAuth", JSON.stringify(true));
         navigate("/home");
       })

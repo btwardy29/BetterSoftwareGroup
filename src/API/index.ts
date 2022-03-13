@@ -56,7 +56,7 @@ export default {
       ],
     }),
 
-  getMedia: (Token?: string) =>
+  getMedia: (Token: string) =>
     instance({
       method: "post",
       url: `Media/GetMediaList`,
@@ -81,6 +81,28 @@ export default {
           const json = JSON.parse(data);
           data = json.Entities;
 
+          return data;
+        },
+      ],
+    }),
+  // token: string, streamType: string, mediaId: number
+  getTrialPlayInfo: (token: string) =>
+    instance({
+      method: "post",
+      url: `Media/GetMediaPlayInfo`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `${token}`,
+      },
+      data: {
+        MediaId: 16,
+        StreamType: "TRIAL",
+      },
+      transformResponse: [
+        function (data) {
+          const json = JSON.parse(data);
+          data = json;
+          console.log(data);
           return data;
         },
       ],

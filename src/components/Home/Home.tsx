@@ -2,17 +2,17 @@ import React, { FC, useEffect, useState } from "react";
 import api from "../../API";
 
 import { StyledSpinner } from "../../styles/Spinner.styles";
-import { HomeContainer, HomeElements } from "../../styles/Home.styles";
+import { HomeContainer } from "../../styles/Home.styles";
+import List from "./List";
+
 const Home: FC = () => {
   const [media, setMedia] = useState([]);
-  const [token, setToken] = useState<any>();
 
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setToken(localStorage.getItem("authToken"));
-    console.log("first", token);
-    api.getMedia(JSON.stringify(token)).then((res) => {
+    let authToken = localStorage.getItem("authToken") as string;
+    api.getMedia(JSON.parse(authToken)).then((res) => {
       setMedia(res.data);
       setIsLoading(false);
     });
@@ -32,7 +32,7 @@ const Home: FC = () => {
           />
         </StyledSpinner>
       ) : (
-        <h1>hello</h1>
+        <List data={media} />
       )}
     </HomeContainer>
   );

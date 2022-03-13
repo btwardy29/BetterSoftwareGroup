@@ -15,7 +15,37 @@ export const HomeContainer = styled.div`
 `;
 
 export const HomeElements = styled.div`
-  height: 300px;
-  width: 100px;
-  background-color: #fff;
+  height: 70%;
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+`;
+
+export const SingleElement = styled.div`
+  height: 150px;
+  width: 267px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #fdfffc38;
+
+  color: #011627;
+  border: 1px solid #2ec4b647;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const CardText = styled.p`
+  font-size: 1.3rem;
+  color: #fdfffc;
+  font-weight: 600;
+  margin: 10px;
 `;

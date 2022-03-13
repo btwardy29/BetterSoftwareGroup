@@ -12,7 +12,6 @@ interface ZustandStore {
       DpiCode: string;
     };
   };
-
   setUser: (user: {
     Username: string;
     Password: string;
@@ -23,6 +22,8 @@ interface ZustandStore {
       DpiCode: string;
     };
   }) => void;
+  currentUrl?: string;
+  setCurrentUrl: (url: string) => void;
 }
 
 export const useStore = create<ZustandStore>(
@@ -34,6 +35,11 @@ export const useStore = create<ZustandStore>(
     setUser: (user) => {
       set((state) => {
         state.user = user;
+      });
+    },
+    setCurrentUrl: (url) => {
+      set((state) => {
+        state.currentUrl = url;
       });
     },
   }))
