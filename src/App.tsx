@@ -5,6 +5,7 @@ import Login from "./components/Login/Login";
 import Nav from "./components/Nav/Nav";
 import Player from "./components/Player/Player";
 import Splash from "./components/Splash/Splash";
+import ProtectedRoutes from "./hoc/ProtectedRoutes";
 
 function App() {
   return (
@@ -12,9 +13,11 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Splash />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/player" element={<Player />} />
         <Route path="/login" element={<Login />} />
+        <Route element={<ProtectedRoutes />}>
+          <Route path="/home" element={<Home />} />
+          <Route path="/player" element={<Player />} />
+        </Route>
       </Routes>
     </Router>
   );
