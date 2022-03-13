@@ -86,7 +86,7 @@ export default {
       ],
     }),
   // token: string, streamType: string, mediaId: number
-  getTrialPlayInfo: (token: string) =>
+  getTrialPlayInfo: (token: string, id: number) =>
     instance({
       method: "post",
       url: `Media/GetMediaPlayInfo`,
@@ -95,7 +95,7 @@ export default {
         Authorization: `${token}`,
       },
       data: {
-        MediaId: 16,
+        MediaId: id,
         StreamType: "TRIAL",
       },
       transformResponse: [
