@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import { useStore } from "../../store";
 import {
   Navbar,
@@ -10,14 +10,16 @@ import {
   CloseMobileMenu,
   MobileLink,
 } from "../../styles/Nav.styles";
+import { useNavigate } from "react-router-dom";
 
 const Nav: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { isAuth, setAuth } = useStore();
+  const navigate = useNavigate();
 
   const logout = () => {
-    setAuth(false);
+    localStorage.removeItem("isAuth");
     setIsOpen(false);
+    navigate("/");
   };
 
   const togleMobileMenu = (e: React.SyntheticEvent<EventTarget>) => {
@@ -26,7 +28,7 @@ const Nav: FC = () => {
 
   const mobile = (
     <MobileLinks>
-      {isAuth ? (
+      {localStorage.getItem("isAuth") ? (
         <>
           <MobileLink to="/home" onClick={togleMobileMenu}>
             Home
@@ -48,7 +50,7 @@ const Nav: FC = () => {
     <>
       <Navbar>
         <NavbarDesktop>
-          {isAuth ? (
+          {localStorage.getItem("isAuth") ? (
             <>
               <Link to="/home">Home</Link>
               <Link to="/" onClick={logout}>

@@ -79,8 +79,7 @@ export default {
       transformResponse: [
         function (data) {
           const json = JSON.parse(data);
-          console.log(json);
-          data = json;
+          data = json.Entities;
 
           return data;
         },
