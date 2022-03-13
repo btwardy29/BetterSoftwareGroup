@@ -34,11 +34,10 @@ interface LoginForm {
 }
 
 const Login: FC = () => {
+  const [err, setErr] = useState();
   const { register, handleSubmit, reset } = useForm<LoginForm>();
-  // const [user, setUser] = useState<UserData>({});
-  // const [auth, setAuth] = useState<AuthData>({});
 
-  const { setAuthData, setUser } = useStore();
+  const { setAuth, setAuthData, setUser } = useStore();
 
   const onSubmit = handleSubmit((data, e) => {
     e?.preventDefault();
@@ -47,13 +46,13 @@ const Login: FC = () => {
       .then((res) => {
         setUser(res.data.User);
         setAuthData(res.data.AuthorizationToken);
-        // setAuth(res.data.AuthorizationToken);
+        setAuth(true);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        err ? setAuth(false) : console.log(err);
+      });
 
     e?.target.reset();
-
-    // api.getMedia(auth.Token);
   });
 
   return (

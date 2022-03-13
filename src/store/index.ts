@@ -14,11 +14,12 @@ interface ZustandStore {
   };
 
   AuthData?: {
+    isAuth?: boolean;
     Token: string;
     TokenExpires: string;
     RefreshToken: string;
   };
-  addAuth: (auth: boolean) => void;
+  setAuth: (auth: boolean) => void;
   getAuth: () => void;
   setAuthData: (authData: {
     Token: string;
@@ -40,10 +41,11 @@ interface ZustandStore {
 }
 
 export const useStore = create<ZustandStore>((set, get) => ({
+  isAuth: false,
   getAuth: () => {
     return get().isAuth;
   },
-  addAuth: (auth) => {
+  setAuth: (auth) => {
     set((state) => {
       state.isAuth = auth;
     });
@@ -51,7 +53,6 @@ export const useStore = create<ZustandStore>((set, get) => ({
   setAuthData: (authData) => {
     set((state) => {
       state.AuthData = authData;
-      console.log(state.AuthData);
     });
   },
   getAuthData: () => {
@@ -60,7 +61,6 @@ export const useStore = create<ZustandStore>((set, get) => ({
   setUser: (User) => {
     set((state) => {
       state.User = User;
-      console.log(state.User);
     });
   },
   getUser: () => {
