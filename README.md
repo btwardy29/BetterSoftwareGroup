@@ -16,7 +16,7 @@ This project uses:
 8. [ReactPlayer](https://www.npmjs.com/package/react-player)
 9. [Axios](https://axios-http.com/)
 
-## used colors:
+## Used colors
 
 [colors](https://coolors.co/palette/011627-fdfffc-2ec4b6-e71d36-ff9f1c)
 
