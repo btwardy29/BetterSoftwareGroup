@@ -3,9 +3,14 @@ import { NavLink } from "react-router-dom";
 import { HiOutlineMenu } from "react-icons/hi";
 import { IoMdClose } from "react-icons/io";
 
+export const NavbarContainer = styled.div`
+  position: absolute;
+  top: 0;
+  width: 90vw;
+`;
+
 export const Navbar = styled.nav`
-  width: 100vw;
-  height: 64px;
+  padding: 1rem 0;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -17,7 +22,7 @@ export const NavbarDesktop = styled.div`
   }
 `;
 export const Link = styled(NavLink)`
-  margin-right: 20px;
+  margin-right: 10px;
   text-transform: uppercase;
   font-size: 1.2rem;
   text-decoration: none;
@@ -57,7 +62,7 @@ export const CloseMobileMenu = styled(IoMdClose)`
 
 export const MobileLinks = styled.div`
   height: 50vh;
-  width: 100vw;
+
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

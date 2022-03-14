@@ -1,27 +1,33 @@
 import styled from "styled-components";
 
-export const LoginContainer = styled.div`
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgb(231, 29, 54);
-  background: radial-gradient(
-    circle,
-    rgba(231, 29, 54, 0.711922268907563) 0%,
-    rgba(1, 22, 39, 1) 100%
-  );
-`;
-
 export const LoginForm = styled.form`
+  width: 100%;
   height: 100%;
-  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   @media (max-width: 1400px) {
+    width: 95%;
+  }
+`;
+export const LoginCard = styled.div`
+  height: 50vh;
+  width: 55vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  background-color: #fdfffc;
+  border-radius: 10px;
+  -webkit-box-shadow: 3px 5px 10px 0px rgba(1, 22, 39, 1);
+  -moz-box-shadow: 3px 5px 10px 0px rgba(1, 22, 39, 1);
+  box-shadow: 3px 5px 10px 0px rgba(1, 22, 39, 1);
+  @media (max-width: 1400px) {
+    width: 60%;
+  }
+  @media (max-width: 860px) {
     width: 95%;
   }
 `;
@@ -34,7 +40,7 @@ export const LoginLabel = styled.label`
 `;
 
 export const LoginInput = styled.input`
-  width: 100%;
+  width: 80%;
   height: 40px;
   font-size: 1.3rem;
   margin: 5px;
@@ -51,9 +57,9 @@ export const LoginInput = styled.input`
 `;
 
 export const LoginButton = styled.button`
-  width: 100%;
+  width: 80%;
   height: 40px;
-  margin: 5px;
+  margin-top: 2rem;
   border: none;
   border-radius: 5px;
   font-size: 1.3rem;

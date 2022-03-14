@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import {
   Card,
-  SplashContainer,
   Text,
   SplashButton,
   SplashLink,
@@ -36,14 +35,12 @@ const Splash: FC = () => {
   };
 
   return (
-    <SplashContainer>
-      <Card>
-        <Text>Do You have an account?</Text>
-        <SplashLink to="/login">Login</SplashLink>
-        <Text>Try free trial version</Text>
-        <SplashButton onClick={handleClick}>Start free</SplashButton>
-      </Card>
-    </SplashContainer>
+    <Card>
+      <Text>Do You have an account?</Text>
+      <SplashLink to="/login">Login</SplashLink>
+      <Text>Try free trial version</Text>
+      <SplashButton onClick={handleClick}>Start free</SplashButton>
+    </Card>
   );
 };
 

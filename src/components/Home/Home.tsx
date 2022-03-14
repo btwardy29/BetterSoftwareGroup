@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from "react";
 import api from "../../API";
 
 import { StyledSpinner } from "../../styles/Spinner.styles";
-import { HomeContainer } from "../../styles/Home.styles";
+
 import List from "./List";
 
 const Home: FC = () => {
@@ -19,7 +19,7 @@ const Home: FC = () => {
   }, []);
 
   return (
-    <HomeContainer>
+    <>
       {isLoading ? (
         <StyledSpinner viewBox="0 0 50 50">
           <circle
@@ -34,7 +34,7 @@ const Home: FC = () => {
       ) : (
         <List data={media} />
       )}
-    </HomeContainer>
+    </>
   );
 };
 
