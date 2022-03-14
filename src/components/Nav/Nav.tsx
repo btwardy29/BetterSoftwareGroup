@@ -1,6 +1,7 @@
-import React, { FC, useState, useEffect } from "react";
-import { useStore } from "../../store";
+import React, { FC, useState } from "react";
+
 import {
+  NavbarContainer,
   Navbar,
   NavbarDesktop,
   Link,
@@ -48,7 +49,7 @@ const Nav: FC = () => {
     </MobileLinks>
   );
   return (
-    <>
+    <NavbarContainer>
       <Navbar>
         <NavbarDesktop>
           {localStorage.getItem("isAuth") ? (
@@ -64,6 +65,7 @@ const Nav: FC = () => {
             </>
           )}
         </NavbarDesktop>
+
         <NavbarMobile>
           {isOpen ? (
             <CloseMobileMenu onClick={togleMobileMenu} />
@@ -71,9 +73,10 @@ const Nav: FC = () => {
             <OpenMobileMenu onClick={togleMobileMenu} />
           )}
         </NavbarMobile>
+
+        {isOpen ? mobile : null}
       </Navbar>
-      {isOpen ? mobile : null}
-    </>
+    </NavbarContainer>
   );
 };
 

@@ -1,27 +1,14 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
-export const SplashContainer = styled.div`
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgb(231, 29, 54);
-  background: radial-gradient(
-    circle,
-    rgba(231, 29, 54, 0.711922268907563) 0%,
-    rgba(1, 22, 39, 1) 100%
-  );
-`;
-
 export const Card = styled.div`
-  height: 50%;
-  width: 30%;
+  height: 30vh;
+  width: 40vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+
   background-color: #fdfffc;
   border-radius: 10px;
   -webkit-box-shadow: 3px 5px 10px 0px rgba(1, 22, 39, 1);

@@ -1,12 +1,12 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import {
-  LoginContainer,
+  LoginCard,
   LoginForm,
   LoginLabel,
   LoginInput,
   LoginButton,
 } from "../../styles/Login.styles";
-import { Card } from "../../styles/Splash.styles";
+
 import { useForm } from "react-hook-form";
 import api from "../../API";
 import { useStore } from "../../store";
@@ -47,27 +47,25 @@ const Login: FC = () => {
   });
 
   return (
-    <LoginContainer>
-      <Card>
-        <LoginForm onSubmit={onSubmit}>
-          <LoginLabel htmlFor="login">Login</LoginLabel>
-          <LoginInput
-            id="login"
-            type="email"
-            {...register("userName")}
-            required
-          ></LoginInput>
-          <LoginLabel htmlFor="password">Password </LoginLabel>
-          <LoginInput
-            id="password"
-            type="password"
-            {...register("password")}
-            required
-          ></LoginInput>
-          <LoginButton type="submit">Login</LoginButton>
-        </LoginForm>
-      </Card>
-    </LoginContainer>
+    <LoginCard>
+      <LoginForm onSubmit={onSubmit}>
+        <LoginLabel htmlFor="login">Login</LoginLabel>
+        <LoginInput
+          id="login"
+          type="email"
+          {...register("userName")}
+          required
+        ></LoginInput>
+        <LoginLabel htmlFor="password">Password </LoginLabel>
+        <LoginInput
+          id="password"
+          type="password"
+          {...register("password")}
+          required
+        ></LoginInput>
+        <LoginButton type="submit">Login</LoginButton>
+      </LoginForm>
+    </LoginCard>
   );
 };
 

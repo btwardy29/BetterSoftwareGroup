@@ -22,7 +22,6 @@ const List: FC<ListData> = (props) => {
               api
                 .getTrialPlayInfo(JSON.parse(authToken), el.Id)
                 .then((res) => {
-                  console.log(res);
                   setCurrentUrl(res.data.ContentUrl);
                   navigate("/player");
                 })
