@@ -17,7 +17,7 @@ const List: FC<ListData> = (props) => {
     <HomeElements>
       {props && props.data
         ? props.data.map((el) => {
-            const playVideo = (e: any) => {
+            const playVideo = (e: React.MouseEvent<HTMLElement>) => {
               let authToken = localStorage.getItem("authToken") as string;
               api
                 .getTrialPlayInfo(JSON.parse(authToken), el.Id)

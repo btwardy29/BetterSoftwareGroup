@@ -102,7 +102,6 @@ export default {
         function (data) {
           const json = JSON.parse(data);
           data = json;
-          console.log(data);
           return data;
         },
       ],
