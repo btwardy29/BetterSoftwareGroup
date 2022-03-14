@@ -18,6 +18,7 @@ const Nav: FC = () => {
 
   const logout = () => {
     localStorage.removeItem("isAuth");
+    localStorage.removeItem("authToken");
     setIsOpen(false);
     navigate("/");
   };
